@@ -9,17 +9,28 @@ public class FrogSimulation {
         maxHops = numHops;
         maxHopsHolder = numHops; // ignore this, it's used for testing
     }
-
-    // private int hopDistance()
-    // implementation is below, but not important
-
     public boolean simulate() {
-        /* to be implemented in part (a) */
-
+        int dist=0;
+        for(int i=0;i<maxHops;i++){
+            dist+=hopDistance();
+            if(dist>=goalDistance){
+                return true;
+            }
+            if(dist<0){
+                return false;
+            }
+        }
+        return false;
     }
 
     public double runSimulations(int num) {
-        /* to be implemented in part (b) */
+        int yes=0;
+        for(int i=0;i<num;i++){
+            if(simulate()){
+                yes++;
+            }
+        }
+        return ((double)yes/num);
 
     }
 
